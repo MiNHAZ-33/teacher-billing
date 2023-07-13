@@ -1,8 +1,12 @@
 import React from 'react'
+import TeacherDetails from './TeacherDetails'
 
 const BillPage = () => {
   return (
-    <div>BillPage</div>
+      <div>
+          <TeacherDetails/>
+          
+    </div>
   )
 }
 

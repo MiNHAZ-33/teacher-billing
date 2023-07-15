@@ -66,7 +66,7 @@ const ExamDetails = () => {
                             <Col>
                                 <Dropdown >
                                     <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                        {examYear ? examYear : 'Select exam name'}
+                                        {examYear ? examYear : 'Select exam year'}
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
                                         {examYears.map((name, index) => {

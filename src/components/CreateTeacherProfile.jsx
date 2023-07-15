@@ -82,7 +82,7 @@ const CreateTeacherProfile = () => {
                                 {position}
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item onClick={() => positionHandler("Professor Emeritus")}>Chairman</Dropdown.Item>
+                                <Dropdown.Item onClick={() => positionHandler("Chairman")}>Chairman</Dropdown.Item>
                                 <Dropdown.Item onClick={() => positionHandler("Proffessor")}>Proffessor</Dropdown.Item>
                                 <Dropdown.Item onClick={() => positionHandler("Assosiate Proffessor")}>Assosiate Proffessor</Dropdown.Item>
                                 <Dropdown.Item onClick={() => positionHandler("Assistant Proffessor")}>Assistant Proffessor</Dropdown.Item>

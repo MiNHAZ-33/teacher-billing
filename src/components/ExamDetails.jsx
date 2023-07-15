@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import { React, useState, useEffect } from 'react'
 import { Card, Col, Container, Form, Row, Dropdown } from 'react-bootstrap'
 
 const ExamDetails = () => {
@@ -66,7 +66,13 @@ const ExamDetails = () => {
         setExamName(name)
     }
 
-    let totalAmounts;
+    const [totalAmount, setTotalAmount] = useState(0)
+
+    useEffect(() => {
+        setTotalAmount(
+            amounts.theory * paperNumber.theoryPaper)
+    }, [amounts.theory, paperNumber.theoryPaper])
+
 
     const examYearHandler = (year) => {
         setExamYear(year)
@@ -96,6 +102,12 @@ const ExamDetails = () => {
         // name === 'dean' && value === true ? setCommeetteeAmounts({ ...commeetteeAmounts, [name]: hour.dean * amounts.dean }) : setCommeetteeAmounts({ ...commeetteeAmounts, [name]: 0 })
     }
 
+    const [theoryQuestionAmounts, setTheoryQuestionAmounts] = useState(0)
+
+    const theoryAmountHandler = (amount) => {
+        // setTotalAmount(totalAmount + amount)
+        return amount
+    }
 
 
     return (
@@ -208,7 +220,9 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{totalAmounts = amounts.theory * paperNumber.theoryPaper}</h6>
+                                {/* <h6 className='pt-2'> {amounts.theory * paperNumber.theoryPaper}</h6> */}
+                                <h6>{theoryAmountHandler(
+                                    amounts.theory * paperNumber.theoryPaper)}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>প্রশ্নপত্রকরণ (ক্লাস টেস্ট)</h6>
@@ -941,7 +955,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>সর্বমোট</h6>
                             </Col>
                             <Col>
-                                <h6 > 250 </h6>
+                                <h6 > {totalAmount} </h6>
                             </Col>
                         </Row>
                     </Card.Body>

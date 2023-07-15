@@ -6,6 +6,12 @@ const ExamDetails = () => {
     const examNames = ['BSc Engineering', 'MSc Engineering', 'BBA', 'Bachelor of Science']
     const examYears = ['2017', '2018', '2019', '2020', '2021', '2022', '2023']
     const tabulations = ['1st year', '2nd year', '3rd year', '4th year']
+    const [studentNumber, setStudentNumber] = useState({
+        baseStudent: 0,
+        classTest: 0,
+
+    })
+
     const [examName, setExamName] = useState('')
     const [examYear, setExamYear] = useState('')
     const [tabulation, setTabulation] = useState('')
@@ -20,6 +26,11 @@ const ExamDetails = () => {
 
     const tabulationHandler = (tabulation) => {
         setTabulation(tabulation)
+    }
+
+    const textInputHandler = (name, value) => {
+        setStudentNumber({ ...studentNumber, [name]: value })
+        console.log(studentNumber.classTest)
     }
 
     return (
@@ -118,21 +129,19 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>ছাত্রের সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input></input>
+                                <input type='number' onChange={(e) => textInputHandler('classTest', e.target.value)} ></input>
                             </Col>
                             <Col>
                                 <h6 className='pt-2'>টাকা</h6>
                             </Col>
                             <Col>
                                 <h6 className='pt-2'>{amounts.classTest}</h6>
-
                             </Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{amounts.classTest}</h6>
-
+                                <h6 className='pt-2'>{amounts.classTest * studentNumber.classTest}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>প্রশ্নপত্রকরণ (ক্লাস টেস্ট)</h6>
@@ -853,13 +862,13 @@ const ExamDetails = () => {
                         <Row>
                             <Col>
                                 <h6 className='pt-2'>সর্বমোট</h6>
-                            </Col> 
+                            </Col>
                             <Col>
                                 <h6 > 250 </h6>
                             </Col>
                         </Row>
                     </Card.Body>
-                    </Card>
+                </Card>
             </Form>
         </Container>
     )

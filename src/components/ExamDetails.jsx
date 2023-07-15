@@ -9,7 +9,26 @@ const ExamDetails = () => {
     const [studentNumber, setStudentNumber] = useState({
         baseStudent: 0,
         classTest: 0,
+        semesterFinalThree: 0,
+        semesterFinalFour: 0,
+        viva: 0,
+        labStudent: 0,
+        tabulationStudent: 0
+    })
 
+    const [paperNumber, setPaperNumber] = useState({
+        theoryPaper: 0,
+        classTest: 0,
+        moderation: 0,
+        labPaper: 0,
+        reportPaper: 0,
+        surveyNumber: 0,
+    })
+
+    const [hour, setHour] = useState({
+        theory: 0,
+        practical: 0,
+        examineerLabHour: 0,
     })
 
     const [examName, setExamName] = useState('')
@@ -19,6 +38,8 @@ const ExamDetails = () => {
     const examNameHandler = (name) => {
         setExamName(name)
     }
+
+    let totalAmounts;
 
     const examYearHandler = (year) => {
         setExamYear(year)
@@ -32,6 +53,18 @@ const ExamDetails = () => {
         setStudentNumber({ ...studentNumber, [name]: value })
         console.log(studentNumber.classTest)
     }
+
+    const paperInputHandler = (name, value) => {
+        setPaperNumber({ ...paperNumber, [name]: value })
+        console.log(paperNumber.classTest)
+    }
+
+    const hourInputHandler = (name, value) => {
+        setHour({ ...hour, [name]: value })
+        console.log(hour.theory)
+    }
+
+
 
     return (
         <Container>
@@ -126,44 +159,47 @@ const ExamDetails = () => {
                         <h6 className='pt-2'>থিওরী (৩ ঘন্টা) অনার্স </h6>
                         <Row>
                             <Col>
-                                <h6 className='pt-2'>ছাত্রের সংখ্যা</h6>
+                                <h6 className='pt-2'>পত্রের সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input type='number' onChange={(e) => textInputHandler('classTest', e.target.value)} ></input>
+                                <input type='number' onChange={(e) => paperInputHandler('theoryPaper', e.target.value)} ></input>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>টাকা</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{amounts.classTest}</h6>
+                                <h6 className='pt-2'>{amounts.theory}</h6>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{amounts.classTest * studentNumber.classTest}</h6>
+                                <h6 className='pt-2'>{totalAmounts = amounts.theory * paperNumber.theoryPaper}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>প্রশ্নপত্রকরণ (ক্লাস টেস্ট)</h6>
                         <Row>
                             <Col>
-                                <h6 className='pt-2'>ছাত্রের সংখ্যা</h6>
+                                <h6 className='pt-2'>পত্রের সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input></input>
+                                <input type='number' onChange={(e) => paperInputHandler('classTest', e.target.value)} ></input>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>টাকা</h6>
                             </Col>
                             <Col>
                                 <h6 className='pt-2'>{amounts.classTest}</h6>
-
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{amounts.classTest}</h6>
+                                <h6 className='pt-2'>{paperNumber.classTest * amounts.classTest}</h6>
 
                             </Col>
                         </Row>
@@ -178,19 +214,21 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>প্রশ্নপত্র সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input></input>
+                                <input type='number' onChange={(e) => paperInputHandler('moderation', e.target.value)} ></input>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>টাকা</h6>
                             </Col>
                             <Col>
                                 <h6 className='pt-2'>{amounts.questionModeration}</h6>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{amounts.questionModeration}</h6>
+                                <h6 className='pt-2'>{paperNumber.moderation * amounts.questionModeration}</h6>
                             </Col>
                         </Row>
                     </Card.Body>
@@ -207,19 +245,21 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>ছাত্রের সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input></input>
+                                <input type='number' onChange={(e) => textInputHandler('semesterFinalThree', e.target.value)} ></input>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>টাকা</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{amounts.examPaperEvalSemesterThree}</h6>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{studentNumber.semesterFinalThree * amounts.examPaperEvalSemesterThree}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>সেমিস্টার ফাইনাল (৪ ঘন্টা)</h6>
@@ -228,19 +268,21 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>ছাত্রের সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input></input>
+                                <input type='number' onChange={(e) => textInputHandler('semesterFinalFour', e.target.value)} ></input>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>টাকা</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{amounts.examPaperEvalSemesterFour}</h6>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{studentNumber.semesterFinalFour * amounts.examPaperEvalSemesterFour}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>ক্লাস টেস্ট</h6>
@@ -249,19 +291,21 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>ছাত্রের সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input></input>
+                                <input type='number' onChange={(e) => textInputHandler('classTest', e.target.value)} ></input>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>টাকা</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{amounts.classTest}</h6>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{studentNumber.classTest * amounts.classTest}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>মৌখিক পরীক্ষা</h6>
@@ -270,19 +314,21 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>ছাত্রের সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input></input>
+                                <input type='number' onChange={(e) => textInputHandler('viva', e.target.value)} ></input>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>টাকা</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{amounts.viva}</h6>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{studentNumber.viva * amounts.viva}</h6>
                             </Col>
                         </Row>
                     </Card.Body>
@@ -296,22 +342,24 @@ const ExamDetails = () => {
                         <h6 className='pt-2'>প্রশ্নপত্র করণ</h6>
                         <Row>
                             <Col>
-                                <h6 className='pt-2'>ছাত্রের সংখ্যা</h6>
+                                <h6 className='pt-2'>পত্রের সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input></input>
+                                <input type='number' onChange={(e) => paperInputHandler('labPaper', e.target.value)} ></input>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>টাকা</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{amounts.labQuestion}</h6>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{paperNumber.labPaper * amounts.labQuestion}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>রিপোর্ট ও স্ক্রিপ্ট</h6>
@@ -320,61 +368,67 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>ছাত্রের সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input></input>
+                                <input type='number' onChange={(e) => paperInputHandler('reportPaper', e.target.value)} ></input>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>টাকা</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{amounts.labReport}</h6>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{paperNumber.reportPaper * amounts.labReport}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>সার্ভে</h6>
                         <Row>
                             <Col>
-                                <h6 className='pt-2'>ছাত্রের সংখ্যা</h6>
+                                <h6 className='pt-2'>দিন সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input></input>
+                                <input type='number' onChange={(e) => paperInputHandler('surveyNumber', e.target.value)} ></input>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>টাকা</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{amounts.survey}</h6>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{paperNumber.surveyNumber * amounts.survey}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>পরীক্ষকের সম্মানী</h6>
                         <Row>
                             <Col>
-                                <h6 className='pt-2'>ছাত্রের সংখ্যা</h6>
+                                <h6 className='pt-2'>ঘন্টা</h6>
                             </Col>
                             <Col>
-                                <input></input>
+                                <input type='number' onChange={(e) => hourInputHandler('examineerLabHour', e.target.value)} ></input>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>টাকা</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{amounts.examineerLabHour}</h6>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{hour.examineerLabHour * amounts.examineerLabHour}</h6>
                             </Col>
                         </Row>
                     </Card.Body>
@@ -404,18 +458,19 @@ const ExamDetails = () => {
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </Col>
-
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>টাকা</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{amounts.tabulationFirst}</h6>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{amounts.tabulationFirst}</h6>
                             </Col>
                         </Row>
                         {/* <h6 className='pt-2'>রিপোর্ট ও স্ক্রিপ্ট</h6> */}
@@ -424,19 +479,20 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>ছাত্রের সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input></input>
+                                <input type='number' onChange={(e) => textInputHandler('tabulationStudent', e.target.value)} ></input>
                             </Col>
-                            <Col>
+                            <Col></Col>
+                            <Col> 
                                 <h6 className='pt-2'>টাকা</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{amounts.tabulationFirst}</h6>
                             </Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{studentNumber.tabulationStudent * amounts.tabulationFirst}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>গ্রেডশীট যাচাই</h6>
@@ -878,7 +934,7 @@ const amounts = {
     theory: 2000,
     classTest: 300,
     questionModeration: 2500,
-    examPaperEvalSenester: 120,
+    examPaperEvalSemesterThree: 120,
     examPaperEvalSemesterFour: 150,
     viva: 60,
     vivaOfficer: 400,
@@ -887,6 +943,7 @@ const amounts = {
     labQuestion: 600,
     labReport: 40,
     survey: 12000,
+    examineerLabHour: 300,
     tabulationFirst: 70,
     tabulationSecond: 75,
     tabulationThird: 80,

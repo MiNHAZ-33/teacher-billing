@@ -395,7 +395,7 @@ const ExamDetails = () => {
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </Col>
-                            
+
                             <Col>
                                 <h6 className='pt-2'>টাকা</h6>
                             </Col>
@@ -451,7 +451,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
                             </Col>
                         </Row>
-                        
+
                     </Card.Body>
                 </Card>
                 {/*প্রশ্নপত্র তৈরী*/}
@@ -523,7 +523,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>{examName === 'BSc Engineering' ? amounts.examPaperEvalSenester : amounts.examPaperEvalSemesterFour}</h6>
                             </Col>
                         </Row>
-                        
+
                     </Card.Body>
                 </Card>
                 {/*তত্ত্বীয় পরীক্ষকের সম্মানি*/}
@@ -710,6 +710,156 @@ const ExamDetails = () => {
                         </Row>
                     </Card.Body>
                 </Card>
+                {/*পরীক্ষা কমিটি*/}
+                <Card className='mt-2'>
+                    <Card.Body>
+                        <Card.Title>
+                            <Card.Title className='text-center pb-2'>পরীক্ষা কমিটি</Card.Title>
+                        </Card.Title>
+                        <Row>
+                            <Col>
+                                <Form.Check type='switch' id='member' label='সদস্য'>
+                                </Form.Check>
+                            </Col>
+                            <Col>
+                                <h6 className='pt-2'>সেমিস্টার সংখ্যা</h6>
+                            </Col>
+                            <Col>
+                                <input></input>
+                            </Col>
+                            <Col>
+                                <h6 className='pt-2'> টাকা</h6>
+                            </Col>
+                            <Col>
+                                <h6 className='pt-2'> {amounts.dean}</h6>
+                            </Col>
+                            <Col>
+                                <h6 className='pt-2'>মোট</h6>
+                            </Col>
+                            <Col>
+                                <h6> {amounts.dean}</h6>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Form.Check type='switch' id='dean' label='সভাপতি'>
+                                </Form.Check>
+                            </Col>
+                            <Col>
+                                <h6 className='pt-2'>সেমিস্টার সংখ্যা</h6>
+                            </Col>
+                            <Col>
+                                <input></input>
+                            </Col>
+                            <Col>
+                                <h6 className='pt-2'> টাকা</h6>
+                            </Col>
+                            <Col>
+                                <h6 className='pt-2'> {amounts.dean}</h6>
+                            </Col>
+                            <Col>
+                                <h6 className='pt-2'>মোট</h6>
+                            </Col>
+                            <Col>
+                                <h6> {amounts.dean}</h6>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Form.Check type='switch' id='dean' label='বিভাগীয় চেয়ারম্যান'>
+                                </Form.Check>
+                            </Col>
+                            <Col>
+                                <h6 className='pt-2'>সেমিস্টার সংখ্যা</h6>
+                            </Col>
+                            <Col>
+                                <input></input>
+                            </Col>
+                            <Col>
+                                <h6 className='pt-2'> টাকা</h6>
+                            </Col>
+                            <Col>
+                                <h6 className='pt-2'> {amounts.dean}</h6>
+                            </Col>
+                            <Col>
+                                <h6 className='pt-2'>মোট</h6>
+                            </Col>
+                            <Col>
+                                <h6> {amounts.dean}</h6>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Form.Check type='switch' id='dean' label='ডিন'>
+                                </Form.Check>
+                            </Col>
+                            <Col>
+                                <h6 className='pt-2'>সেমিস্টার সংখ্যা</h6>
+                            </Col>
+                            <Col>
+                                <input></input>
+                            </Col>
+                            <Col>
+                                <h6 className='pt-2'> টাকা</h6>
+                            </Col>
+                            <Col>
+                                <h6 className='pt-2'> {amounts.dean}</h6>
+                            </Col>
+                            <Col>
+                                <h6 className='pt-2'>মোট</h6>
+                            </Col>
+                            <Col>
+                                <h6> {amounts.dean}</h6>
+                            </Col>
+                        </Row>
+                    </Card.Body>
+                </Card>
+                <Card className='mt-2'>
+                    <Card.Body>
+                        <Card.Title className='text-center pb-2'>বিবিধ</Card.Title>
+                        <Row>
+                            <Col>
+                                <h6 className='pt-2'>ডাক মাশুল</h6>
+                            </Col>
+                            <Col>
+                                <input></input>
+                            </Col>
+                            <Col>
+                                <h6 > মোট</h6>
+                            </Col>
+                            <Col>
+                                <h6 > 250 </h6>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <h6 className='pt-2'>বিবিধ</h6>
+                            </Col>
+                            <Col>
+                                <input></input>
+                            </Col>
+                            <Col>
+                                <h6 > মোট</h6>
+                            </Col>
+                            <Col>
+                                <h6 > 250 </h6>
+                            </Col>
+                        </Row>
+                    </Card.Body>
+                </Card>
+                <Card className='mt-2'>
+                    <Card.Body>
+                        <Card.Title className='text-center pb-2'>সর্বমোট</Card.Title>
+                        <Row>
+                            <Col>
+                                <h6 className='pt-2'>সর্বমোট</h6>
+                            </Col>
+                            <Col>
+                                <h6 > 250 </h6>
+                            </Col>
+                        </Row>
+                    </Card.Body>
+                    </Card>
             </Form>
         </Container>
     )

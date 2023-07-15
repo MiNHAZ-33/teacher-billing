@@ -38,7 +38,11 @@ const ExamDetails = () => {
         examineerLabHour: 0,
         labHeadExamineer: 0,
         invigilator: 0,
-        administer: 0
+        administer: 0,
+        examCommitteeMember: 0,
+        examCommitteePresident: 0,
+        chairman: 0,
+        dean: 0,
     })
 
     const [checkedButtons, setCheckedButtons] = useState({
@@ -51,6 +55,12 @@ const ExamDetails = () => {
     const [examName, setExamName] = useState('')
     const [examYear, setExamYear] = useState('')
     const [tabulation, setTabulation] = useState('')
+    const [commeetteeAmounts, setCommeetteeAmounts] = useState({
+        examCommitteeMember: 0,
+        examCommitteePresident: 0,
+        chairman: 0,
+        dean: 0,
+    })
 
     const examNameHandler = (name) => {
         setExamName(name)
@@ -80,6 +90,10 @@ const ExamDetails = () => {
 
     const handleCheckedButton = (name, value) => {
         setCheckedButtons({ ...checkedButtons, [name]: value })
+        // name === 'examCommitteeMember' && value === true ? setCommeetteeAmounts({ ...commeetteeAmounts, [name]: hour.examCommitteeMember * amounts.examCommitteeMember }) : setCommeetteeAmounts({ ...commeetteeAmounts, [name]: 0 })
+        name === 'examCommitteePresident' && value === true ? setCommeetteeAmounts({ ...commeetteeAmounts, [name]: hour.examCommitteePresident * amounts.examCommitteePresident }) : setCommeetteeAmounts({ ...commeetteeAmounts, [name]: 0 })
+        // name === 'chairman' && value === true ? setCommeetteeAmounts({ ...commeetteeAmounts, [name]: hour.chairman * amounts.deptChairman }) : setCommeetteeAmounts({ ...commeetteeAmounts, [name]: 0 })
+        // name === 'dean' && value === true ? setCommeetteeAmounts({ ...commeetteeAmounts, [name]: hour.dean * amounts.dean }) : setCommeetteeAmounts({ ...commeetteeAmounts, [name]: 0 })
     }
 
 
@@ -789,91 +803,99 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>সেমিস্টার সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input></input>
+                                <input onChange={(e) => hourInputHandler('examCommitteeMember', e.target.value)}></input>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'> টাকা</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'> {amounts.dean}</h6>
+                                <h6 className='pt-2'> {amounts.examCommitteeMember}</h6>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6> {amounts.dean}</h6>
+                                <h6> {commeetteeAmounts.examCommitteeMember}</h6>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Form.Check type='switch' id='dean' label='সভাপতি'>
+                                <Form.Check type='switch' id='chairman' label='চেয়ারম্যান' onChange={(e) => handleCheckedButton('examCommitteeChairman', e.target.checked)}>
                                 </Form.Check>
                             </Col>
                             <Col>
                                 <h6 className='pt-2'>সেমিস্টার সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input></input>
+                                <input onChange={(e) => hourInputHandler('examCommitteeChairman', e.target.value)}></input>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'> টাকা</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'> {amounts.dean}</h6>
+                                <h6 className='pt-2'> {amounts.deptChairman}</h6>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6> {amounts.dean}</h6>
+                                <h6> {commeetteeAmounts.chairman}</h6>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Form.Check type='switch' id='dean' label='বিভাগীয় চেয়ারম্যান'>
+                                <Form.Check type='switch' id='dean' label='ডিন' onChange={(e) => handleCheckedButton('examCommitteeDean', e.target.checked)}>
                                 </Form.Check>
                             </Col>
                             <Col>
                                 <h6 className='pt-2'>সেমিস্টার সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input></input>
+                                <input onChange={(e) => hourInputHandler('examCommitteeDean', e.target.value)}></input>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'> টাকা</h6>
                             </Col>
                             <Col>
                                 <h6 className='pt-2'> {amounts.dean}</h6>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6> {amounts.dean}</h6>
+                                <h6> {commeetteeAmounts.dean}</h6>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Form.Check type='switch' id='dean' label='ডিন'>
+                                <Form.Check type='switch' id='controller' label='প্রেসিডেন্ট' onChange={(e) => handleCheckedButton('examCommitteePresident', e.target.checked)}>
                                 </Form.Check>
                             </Col>
                             <Col>
                                 <h6 className='pt-2'>সেমিস্টার সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input></input>
+                                <input onChange={(e) => hourInputHandler('examCommitteePresident', e.target.value)}></input>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'> টাকা</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'> {amounts.dean}</h6>
+                                <h6 className='pt-2'> {amounts.examCommitteePresident}</h6>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6> {amounts.dean}</h6>
+                                <h6> {commeetteeAmounts.examCommitteePresident}</h6>
                             </Col>
                         </Row>
                     </Card.Body>

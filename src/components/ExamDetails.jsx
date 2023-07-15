@@ -853,7 +853,7 @@ const ExamDetails = () => {
                         <Row>
                             <Col>
                                 <h6 className='pt-2'>সর্বমোট</h6>
-                            </Col>
+                            </Col> 
                             <Col>
                                 <h6 > 250 </h6>
                             </Col>

@@ -5,6 +5,7 @@ import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } 
 import Profile from './components/Profile';
 import Navbar from './components/Navbar';
 import BillPage from './components/BiilPage';
+import CreateTeacherProfile from './components/CreateTeacherProfile';
 
 function App() {
 
@@ -12,14 +13,15 @@ function App() {
     createRoutesFromElements(
       <Route path='/' element={<Navbar />}>
         <Route path='/profile' element={<Profile />}></Route>
-        <Route path='/billpage' element={<BillPage/>}></Route>
+        <Route path='/createprofile' element={<CreateTeacherProfile />}></Route>
+        <Route path='/billpage' element={<BillPage />}></Route>
       </Route>
     )
   );
 
   return (
     <div >
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </div>
   );
 }

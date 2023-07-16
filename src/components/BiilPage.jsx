@@ -5,7 +5,7 @@ import ExamDetails from './ExamDetails'
 const BillPage = () => {
     return (
         <div>
-            {/* <TeacherDetails /> */}
+            <TeacherDetails />
             <ExamDetails />
         </div>
     )

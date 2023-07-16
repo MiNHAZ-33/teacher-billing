@@ -57,7 +57,7 @@ const CreateTeacherProfile = () => {
 
 
     return (
-        <div className='container'>
+        <div className='container' style={{width: '50rem'}}>
             <h1 className='text-center pt-4 pb-4'>শিক্ষকদের প্রোফাইল তৈরী করুন</h1>
             <Form className=' border border-secondary p-3 rounded' >
                 <Form.Group>

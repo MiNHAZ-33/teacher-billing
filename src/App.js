@@ -6,6 +6,7 @@ import Profile from './components/Profile';
 import NavBar from './components/Navbar';
 import BillPage from './components/BiilPage';
 import CreateTeacherProfile from './components/CreateTeacherProfile';
+import BillAmount from './components/BillAmount';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route index element={<BillPage />}></Route>
         <Route path='/profile' element={<Profile />}></Route>
         <Route path='/createprofile' element={<CreateTeacherProfile />}></Route>
+        <Route path='/abillamount' element={<BillAmount />}></Route>
         <Route path='/billpage' element={<BillPage />}></Route>
       </Route>
     )

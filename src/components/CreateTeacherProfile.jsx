@@ -2,62 +2,48 @@ import React, { useState } from 'react';
 import { Row, Col, Form, Button, Dropdown, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addTeacher } from '../store/teacherSlice';
 
 const CreateTeacherProfile = () => {
 
     const [position, setposition] = useState('Choose an option');
-    const [loading, setLoading] = useState(false);
-    let name;
-    let nameBengali;
-    let departmentName;
+    const [name, setName] = useState('');
+    const [nameBengali, setNameBengali] = useState('');
+    const [department, setDepartment] = useState('');
+    const dispatch = useDispatch();
 
     const history = useNavigate();
 
     const positionHandler = (e) => {
         setposition(e);
     }
-
     const nameHandler = (e) => {
-        name = e.target.value;
+        setName(e.target.value);
     }
-
-
     const phoneHandler = (e) => {
-        nameBengali = e.target.value;
+        setNameBengali(e.target.value);
     }
 
     const departmentNameHandler = (e) => {
-        departmentName = e.target.value;
+        setDepartment(e.target.value);
     }
 
-    const saveToLocal = (key, value) => {
-        localStorage.setItem(key, JSON.stringify(value));
+    const handleSignUp = async (event) => {
+        event.preventDefault();
+        dispatch(addTeacher({
+            nameEnglish: name,
+            nameBengali: nameBengali,
+            department: department,
+            rank: position
+        })
+        );
+
+        history('/profile');
     }
-
-    const handleSignUp = async () => {
-
-        // if (password === confirmPassword) {
-        //     setLoading(true);
-        //     // saveToLocal('name', name);
-        //     // saveToLocal('email', email);
-        //     // saveToLocal('phone', phone);
-        //     // saveToLocal('position', position);
-        //     // saveToLocal('password', password);
-        //     // saveToLocal('departmentName', departmentName);
-        //     // setTimeout(() => {
-        //     //     history('/profile');
-        //     // }, 100);
-        //     history('/profile');
-        //     setLoading(false);
-        // } else {
-        //     alert('Password does not match');
-        //     setLoading(false);
-        // }
-    }
-
 
     return (
-        <div className='container' style={{width: '50rem'}}>
+        <div className='container' style={{ width: '50rem' }}>
             <h1 className='text-center pt-4 pb-4'>শিক্ষকদের প্রোফাইল তৈরী করুন</h1>
             <Form className=' border border-secondary p-3 rounded' >
                 <Form.Group>
@@ -94,25 +80,9 @@ const CreateTeacherProfile = () => {
                 </Row>
 
                 <div className='text-center'>
-                    <Button onClick={handleSignUp} variant="primary" className='mt-4' type="submit">{loading ? 'Loading' : 'Submit'}</Button>
-                    {
-                        loading ? <Container className='text-center mt-3'>
-                            <div className="spinner-border text-primary" role="status">
-                                <span className="visually-hidden">Loading...</span>
-                            </div>
-                        </Container> : null
-                    }
+                    <Button onClick={(event) => handleSignUp(event)} variant="primary" className='mt-4' type="submit">Add Teacher</Button>
                 </div>
             </Form>
-
-            <Row className='py-3 text-center '>
-                <Col className='text-white'>
-                    Already have any account?{' '}
-                    <Link to={'/login'}>
-                        Login
-                    </Link>
-                </Col>
-            </Row>
 
         </div>
     )

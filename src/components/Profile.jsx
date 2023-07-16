@@ -1,45 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Card, Button, Container, Row, Col } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { fetchTeachers, getTeacher } from '../store/teacherApiSlice'
 
 const Profile = () => {
 
-  const teacher = [
-    {
-      name: 'Subir Saha',
-      nameBengali: 'সুবীর সাহা',
-      department: 'Comuputer Science and Engineering',
-      rank: 'Assistant Professor',
-    },
-    {
-      name: 'Nitun Poddar',
-      nameBengali: 'নিতুন পোদ্দার',
-      department: 'Electronice and Electrical Engineering',
-      rank: 'Lecturer',
-    },
-    {
-      name: 'Rafiqul Islam',
-      nameBengali: 'রফিকুল ইসলাম',
-      department: 'Mathematics',
-      rank: 'Associate Professor',
-    },
-    {
-      name: 'Arif Ahmed',
-      nameBengali: 'আরিফ আহমেদ',
-      department: 'Comuputer Science and Engineering',
-      rank: 'Assistant Professor',
-    },
-  ]
+  const teacher = useSelector(state => state.teacher)
+  // const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   dispatch(fetchTeachers())
+  // }, [])
 
   return (
     <Container>
-
       <Row>
         {teacher.map((teacher, index) => (
           <Col key={index} md={6}>
             <Card className='mt-4'>
               <Card.Body>
-                <Card.Title>{teacher.name}</Card.Title>
+                <Card.Title>{teacher.nameEnglish}</Card.Title>
                 <Card.Text>
                   {teacher.nameBengali}<br />
                   {teacher.department}<br />

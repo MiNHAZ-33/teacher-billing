@@ -19,6 +19,7 @@ const ExamDetails = () => {
         supervisor: 0,
         thesisExaminee: 0,
         thesisViva: 0,
+        administerPaper: 0
     })
 
     const [paperNumber, setPaperNumber] = useState({
@@ -92,13 +93,13 @@ const ExamDetails = () => {
     const [totalComposedPaperAmount, setTotalComposedPaperAmount] = useState(0)
     const [totalPhotocopyPaperAmount, setTotalPhotocopyPaperAmount] = useState(0)
     const [totalModerationPaperAmount, setTotalModerationPaperAmount] = useState(0)
+    const [totalAdministerPaperAmount, setTotalAdministerPaperAmount] = useState(0)
     const [totalLabHeadExamineerAmount, setTotalLabHeadExamineerAmount] = useState(0)
     const [totalInvigilatorAmount, setTotalInvigilatorAmount] = useState(0)
     const [totalAdministerAmount, setTotalAdministerAmount] = useState(0)
     const [totalSupervisorAmount, setTotalSupervisorAmount] = useState(0)
     const [totalThesisExamineeAmount, setTotalThesisExamineeAmount] = useState(0)
     const [totalThesisVivaAmount, setTotalThesisVivaAmount] = useState(0)
-
 
 
     useEffect(() => {
@@ -118,10 +119,11 @@ const ExamDetails = () => {
         setTotalGradeSheetAmount(studentNumber.gradeSheet * amounts.gradeSheetEval)
         setTotalComposedPaperAmount(paperNumber.composedPaper * amounts.theoryQuestCompose)
         setTotalPhotocopyPaperAmount(paperNumber.photocopyPaper * amounts.theoryQuestPhotocopy)
-        setTotalModerationPaperAmount(paperNumber.moderationPaper * amounts.theoryQuestModeration)
+        setTotalAdministerPaperAmount(paperNumber.administerPaper * amounts.administerPaper)
+        setTotalModerationPaperAmount(paperNumber.moderationPaper * amounts.administerPaper)
         setTotalLabHeadExamineerAmount(hour.labHeadExamineer * amounts.labHeadExamineer)
         setTotalInvigilatorAmount(hour.invigilator * amounts.invigilator)
-        setTotalAdministerAmount(paperNumber.administerPaper * amounts.administer)
+        setTotalAdministerAmount(studentNumber.administerPaper * amounts.administer)
         setTotalSupervisorAmount(studentNumber.supervisor * amounts.supervisor)
         setTotalThesisExamineeAmount(studentNumber.thesisExaminee * amounts.thesisExaminee)
         setTotalThesisVivaAmount(studentNumber.thesisViva * amounts.thesisViva)
@@ -142,6 +144,7 @@ const ExamDetails = () => {
     }
 
     const textInputHandler = (name, value) => {
+        console.log(name, value)
         setStudentNumber({ ...studentNumber, [name]: value })
     }
 
@@ -725,14 +728,14 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>টাকা</h6>
                             </Col>
                             <Col>
-                                <h6> {amounts.theoryQuestModeration}</h6>
+                                <h6> {amounts.administerPaper}</h6>
                             </Col>
                             <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6> {paperNumber.moderationPaper * amounts.theoryQuestModeration}</h6>
+                                <h6> {totalAdministerPaperAmount}</h6>
                             </Col>
                         </Row>
 
@@ -796,7 +799,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>ছাত্রের সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input type='number' onChange={(e) => hourInputHandler('administer', e.target.value)} ></input>
+                                <input type='number' onChange={(e) => textInputHandler('administerPaper', e.target.value)} ></input>
                             </Col>
                             <Col></Col>
                             <Col>
@@ -1085,7 +1088,7 @@ const amounts = {
     tabulationFourth: 90,
     gradeSheetEval: 350,
     theoryQuestCompose: 400,
-    theoryQuestModeration: 200,
+    administerPaper: 200,
     theoryQuestPhotocopy: 25,
     labHeadExamineer: 600,
     invigilator: 500,

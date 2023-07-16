@@ -7,13 +7,15 @@ import NavBar from './components/Navbar';
 import BillPage from './components/BiilPage';
 import CreateTeacherProfile from './components/CreateTeacherProfile';
 import BillAmount from './components/BillAmount';
+import LandingPage from './components/LandingPage';
 
 function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path='/' element={<NavBar />}>
-        <Route index element={<BillPage />}></Route>
+        <Route index element={<LandingPage />}></Route>
+        <Route path='/home' element={<LandingPage />}></Route>
         <Route path='/profile' element={<Profile />}></Route>
         <Route path='/createprofile' element={<CreateTeacherProfile />}></Route>
         <Route path='/abillamount' element={<BillAmount />}></Route>

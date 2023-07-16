@@ -11,7 +11,7 @@ const NavBar = () => {
                 <Container>
                     <Navbar.Brand >টিচার্স বিলিং এসিস্ট্যান্ট</Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link to="/billpage" as={Link}>হোম</Nav.Link>
+                        <Nav.Link to="/home" as={Link}>হোম</Nav.Link>
                         <Nav.Link to="/profile" as={Link}>প্রোফাইল</Nav.Link>
                         {/* <Nav.Link to="/billlist" as={Link}> বিলের বিবরণি </Nav.Link> */}
                         <Nav.Link to='/createprofile' as={Link}>নতুন প্রোফাইল</Nav.Link>

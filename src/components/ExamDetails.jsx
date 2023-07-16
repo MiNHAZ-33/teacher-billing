@@ -98,10 +98,7 @@ const ExamDetails = () => {
     const [totalSupervisorAmount, setTotalSupervisorAmount] = useState(0)
     const [totalThesisExamineeAmount, setTotalThesisExamineeAmount] = useState(0)
     const [totalThesisVivaAmount, setTotalThesisVivaAmount] = useState(0)
-    const [totalExamCommitteeMemberAmount, setTotalExamCommitteeMemberAmount] = useState(0)
-    const [totalExamCommitteePresidentAmount, setTotalExamCommitteePresidentAmount] = useState(0)
-    const [totalChairmanAmount, setTotalChairmanAmount] = useState(0)
-    const [totalDeanAmount, setTotalDeanAmount] = useState(0)
+
 
 
     useEffect(() => {
@@ -128,17 +125,12 @@ const ExamDetails = () => {
         setTotalSupervisorAmount(studentNumber.supervisor * amounts.supervisor)
         setTotalThesisExamineeAmount(studentNumber.thesisExaminee * amounts.thesisExaminee)
         setTotalThesisVivaAmount(studentNumber.thesisViva * amounts.thesisViva)
-        setTotalExamCommitteeMemberAmount(hour.examCommitteeMember * amounts.examCommitteeMember)
-        setTotalExamCommitteePresidentAmount(hour.examCommitteePresident * amounts.examCommitteePresident)
-        setTotalChairmanAmount(hour.chairman * amounts.deptChairman)
-        setTotalDeanAmount(hour.dean * amounts.dean)
 
         setTotalAmount(
-            totalTheoryAmount + totalClassTestAmount + totalPaperModerationAmount + totalSemesterFinalThreeAmount + totalSemesterFinalFourAmount + totalClassTestEvalAmount + totalVivaAmount + totalLabPaperAmount + totalReportPaperAmount + totalSurveyAmount + totalExamineerLabHourAmount + totalTabulationAmount + totalGradeSheetAmount + totalComposedPaperAmount + totalPhotocopyPaperAmount + totalModerationPaperAmount + totalLabHeadExamineerAmount + totalInvigilatorAmount + totalAdministerAmount + totalSupervisorAmount + totalThesisExamineeAmount + totalThesisVivaAmount + totalExamCommitteeMemberAmount + totalExamCommitteePresidentAmount + totalChairmanAmount + totalDeanAmount
+            totalTheoryAmount + totalClassTestAmount + totalPaperModerationAmount + totalSemesterFinalThreeAmount + totalSemesterFinalFourAmount + totalClassTestEvalAmount + totalVivaAmount + totalLabPaperAmount + totalReportPaperAmount + totalSurveyAmount + totalExamineerLabHourAmount + totalTabulationAmount + totalGradeSheetAmount + totalComposedPaperAmount + totalPhotocopyPaperAmount + totalModerationPaperAmount + totalLabHeadExamineerAmount + totalInvigilatorAmount + totalAdministerAmount + totalSupervisorAmount + totalThesisExamineeAmount + totalThesisVivaAmount + extra.postBill + extra.extra + commeetteeAmounts.examCommitteeMember + commeetteeAmounts.examCommitteePresident + commeetteeAmounts.examCommitteeChairman + commeetteeAmounts.examCommitteeDean
         )
-        console.log(totalAmount)
-
-    }, [studentNumber, paperNumber, hour, amounts, totalTheoryAmount])
+    }, [
+        totalTheoryAmount, totalClassTestAmount, totalPaperModerationAmount, totalSemesterFinalThreeAmount, totalSemesterFinalFourAmount, totalClassTestEvalAmount, totalVivaAmount, totalLabPaperAmount, totalReportPaperAmount, totalSurveyAmount, totalExamineerLabHourAmount, totalTabulationAmount, totalGradeSheetAmount, totalComposedPaperAmount, totalPhotocopyPaperAmount, totalModerationPaperAmount, totalLabHeadExamineerAmount, totalInvigilatorAmount, totalAdministerAmount, totalSupervisorAmount, totalThesisExamineeAmount, totalThesisVivaAmount, commeetteeAmounts, extra, studentNumber, paperNumber, hour, amounts,])
 
 
     const examYearHandler = (year) => {
@@ -162,7 +154,7 @@ const ExamDetails = () => {
     }
 
     const extraInputHandler = (name, value) => {
-        setExtra({ ...extra, [name]: value })
+        setExtra({ ...extra, [name]: value * 1 })
     }
 
     const handleCheckedButton = (name, value) => {
@@ -1022,28 +1014,35 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>ডাক মাশুল</h6>
                             </Col>
                             <Col>
-                                <input onChange={(e) => extraInputHandler('postBill', e.target.value)}></input>
+                                <input type='number' onChange={(e) => extraInputHandler('postBill', e.target.value)}></input>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 > মোট</h6>
                             </Col>
                             <Col>
                                 <h6 > {extra.postBill} </h6>
                             </Col>
+                            <Col>
+                            </Col>
+                            <Col></Col>
                         </Row>
                         <Row>
                             <Col>
                                 <h6 className='pt-2'>বিবিধ</h6>
                             </Col>
                             <Col>
-                                <input onChange={(e) => extraInputHandler('extra', e.target.value)}></input>
+                                <input type='number' onChange={(e) => extraInputHandler('extra', e.target.value)}></input>
                             </Col>
+                            <Col></Col>
                             <Col>
                                 <h6 > মোট</h6>
                             </Col>
                             <Col>
                                 <h6 > {extra.extra} </h6>
                             </Col>
+                            <Col></Col>
+                            <Col></Col>
                         </Row>
                     </Card.Body>
                 </Card>

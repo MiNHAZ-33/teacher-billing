@@ -34,11 +34,14 @@ const teacherSlice = createSlice(
         reducers: {
             addTeacher: (state, action) => {
                 state.push(action.payload);
+            },
+            removeTeacher: (state, action) => {
+                state.splice(action.payload, 1);
             }
         }
     }
 )
 
-export const { addTeacher } = teacherSlice.actions;
+export const { addTeacher, removeTeacher } = teacherSlice.actions;
 
 export default teacherSlice.reducer;

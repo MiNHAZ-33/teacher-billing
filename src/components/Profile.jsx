@@ -3,11 +3,12 @@ import { Card, Button, Container, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { fetchTeachers, getTeacher } from '../store/teacherApiSlice'
+import { removeTeacher } from '../store/teacherSlice'
 
 const Profile = () => {
 
   const teacher = useSelector(state => state.teacher)
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   // useEffect(() => {
   //   dispatch(fetchTeachers())
@@ -27,7 +28,7 @@ const Profile = () => {
                   {teacher.rank}
                 </Card.Text>
                 <Button variant="primary">Edit</Button>
-                <Button className='m-2' variant="danger">Delete</Button>
+                <Button onClick={() => dispatch(removeTeacher(index))} className='m-2' variant="danger">Delete</Button>
               </Card.Body>
             </Card>
           </Col>

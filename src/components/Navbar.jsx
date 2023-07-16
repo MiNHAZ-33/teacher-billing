@@ -13,9 +13,9 @@ const NavBar = () => {
                     <Nav className="me-auto">
                         <Nav.Link to="/home" as={Link}>হোম</Nav.Link>
                         <Nav.Link to="/profile" as={Link}>প্রোফাইল</Nav.Link>
-                        {/* <Nav.Link to="/billlist" as={Link}> বিলের বিবরণি </Nav.Link> */}
                         <Nav.Link to='/createprofile' as={Link}>নতুন প্রোফাইল</Nav.Link>
                         <Nav.Link to="/abillamount" as={Link}> বিলের পরিমাণ </Nav.Link>
+                        <Nav.Link to="/billpage" as={Link}> বিল তৈরী</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

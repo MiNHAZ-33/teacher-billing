@@ -64,6 +64,11 @@ const ExamDetails = () => {
         examCommitteeDean: 0,
     })
 
+    const [extra, setExtra] = useState({
+        postBill: 0,
+        extra: 0,
+    })
+
 
     const examNameHandler = (name) => {
         setExamName(name)
@@ -128,8 +133,12 @@ const ExamDetails = () => {
         setTotalChairmanAmount(hour.chairman * amounts.deptChairman)
         setTotalDeanAmount(hour.dean * amounts.dean)
 
+        setTotalAmount(
+            totalTheoryAmount + totalClassTestAmount + totalPaperModerationAmount + totalSemesterFinalThreeAmount + totalSemesterFinalFourAmount + totalClassTestEvalAmount + totalVivaAmount + totalLabPaperAmount + totalReportPaperAmount + totalSurveyAmount + totalExamineerLabHourAmount + totalTabulationAmount + totalGradeSheetAmount + totalComposedPaperAmount + totalPhotocopyPaperAmount + totalModerationPaperAmount + totalLabHeadExamineerAmount + totalInvigilatorAmount + totalAdministerAmount + totalSupervisorAmount + totalThesisExamineeAmount + totalThesisVivaAmount + totalExamCommitteeMemberAmount + totalExamCommitteePresidentAmount + totalChairmanAmount + totalDeanAmount
+        )
+        console.log(totalAmount)
 
-    }, [studentNumber, paperNumber, hour, amounts])
+    }, [studentNumber, paperNumber, hour, amounts, totalTheoryAmount])
 
 
     const examYearHandler = (year) => {
@@ -150,6 +159,10 @@ const ExamDetails = () => {
 
     const hourInputHandler = (name, value) => {
         setHour({ ...hour, [name]: value })
+    }
+
+    const extraInputHandler = (name, value) => {
+        setExtra({ ...extra, [name]: value })
     }
 
     const handleCheckedButton = (name, value) => {
@@ -192,13 +205,6 @@ const ExamDetails = () => {
             }
         }
 
-    }
-
-    const [theoryQuestionAmounts, setTheoryQuestionAmounts] = useState(0)
-
-    const theoryAmountHandler = (amount) => {
-        // setTotalAmount(totalAmount + amount)
-        return amount
     }
 
 
@@ -766,7 +772,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6> {hour.labHeadExamineer * amounts.labHeadExamineer}</h6>
+                                <h6> {totalLabHeadExamineerAmount}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>পরিদর্শক</h6>
@@ -789,7 +795,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{hour.invigilator * amounts.invigilator}</h6>
+                                <h6 className='pt-2'>{totalInvigilatorAmount}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>তদারকি</h6>
@@ -812,7 +818,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{hour.administer * amounts.administer}</h6>
+                                <h6 className='pt-2'>{totalAdministerAmount}</h6>
                             </Col>
                         </Row>
 
@@ -1016,13 +1022,13 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>ডাক মাশুল</h6>
                             </Col>
                             <Col>
-                                <input></input>
+                                <input onChange={(e) => extraInputHandler('postBill', e.target.value)}></input>
                             </Col>
                             <Col>
                                 <h6 > মোট</h6>
                             </Col>
                             <Col>
-                                <h6 > 250 </h6>
+                                <h6 > {extra.postBill} </h6>
                             </Col>
                         </Row>
                         <Row>
@@ -1030,13 +1036,13 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>বিবিধ</h6>
                             </Col>
                             <Col>
-                                <input></input>
+                                <input onChange={(e) => extraInputHandler('extra', e.target.value)}></input>
                             </Col>
                             <Col>
                                 <h6 > মোট</h6>
                             </Col>
                             <Col>
-                                <h6 > 250 </h6>
+                                <h6 > {extra.extra} </h6>
                             </Col>
                         </Row>
                     </Card.Body>

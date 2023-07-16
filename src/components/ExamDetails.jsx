@@ -11,6 +11,7 @@ const ExamDetails = () => {
         classTest: 0,
         semesterFinalThree: 0,
         semesterFinalFour: 0,
+        classTestEval: 0,
         viva: 0,
         labStudent: 0,
         tabulationStudent: 0,
@@ -29,7 +30,8 @@ const ExamDetails = () => {
         surveyNumber: 0,
         composedPaper: 0,
         photocopyPaper: 0,
-        moderationPaper: 0
+        moderationPaper: 0,
+        administerPaper: 0,
     })
 
     const [hour, setHour] = useState({
@@ -41,15 +43,15 @@ const ExamDetails = () => {
         administer: 0,
         examCommitteeMember: 0,
         examCommitteePresident: 0,
-        chairman: 0,
-        dean: 0,
+        examCommitteeChairman: 0,
+        examCommitteeDean: 0,
     })
 
     const [checkedButtons, setCheckedButtons] = useState({
         examCommitteeMember: false,
         examCommitteePresident: false,
-        chairman: false,
-        dean: false,
+        examCommitteeChairman: false,
+        examCommitteeDean: false,
     })
 
     const [examName, setExamName] = useState('')
@@ -58,9 +60,10 @@ const ExamDetails = () => {
     const [commeetteeAmounts, setCommeetteeAmounts] = useState({
         examCommitteeMember: 0,
         examCommitteePresident: 0,
-        chairman: 0,
-        dean: 0,
+        examCommitteeChairman: 0,
+        examCommitteeDean: 0,
     })
+
 
     const examNameHandler = (name) => {
         setExamName(name)
@@ -68,10 +71,65 @@ const ExamDetails = () => {
 
     const [totalAmount, setTotalAmount] = useState(0)
 
+    const [totalTheoryAmount, setTotalTheoryAmount] = useState(0)
+    const [totalClassTestAmount, setTotalClassTestAmount] = useState(0)
+    const [totalPaperModerationAmount, setTotalPaperModerationAmount] = useState(0)
+    const [totalSemesterFinalThreeAmount, setTotalSemesterFinalThreeAmount] = useState(0)
+    const [totalSemesterFinalFourAmount, setTotalSemesterFinalFourAmount] = useState(0)
+    const [totalClassTestEvalAmount, setTotalClassTestEvalAmount] = useState(0)
+    const [totalVivaAmount, setTotalVivaAmount] = useState(0)
+    const [totalLabPaperAmount, setTotalLabPaperAmount] = useState(0)
+    const [totalReportPaperAmount, setTotalReportPaperAmount] = useState(0)
+    const [totalSurveyAmount, setTotalSurveyAmount] = useState(0)
+    const [totalExamineerLabHourAmount, setTotalExamineerLabHourAmount] = useState(0)
+    const [totalTabulationAmount, setTotalTabulationAmount] = useState(0)
+    const [totalGradeSheetAmount, setTotalGradeSheetAmount] = useState(0)
+    const [totalComposedPaperAmount, setTotalComposedPaperAmount] = useState(0)
+    const [totalPhotocopyPaperAmount, setTotalPhotocopyPaperAmount] = useState(0)
+    const [totalModerationPaperAmount, setTotalModerationPaperAmount] = useState(0)
+    const [totalLabHeadExamineerAmount, setTotalLabHeadExamineerAmount] = useState(0)
+    const [totalInvigilatorAmount, setTotalInvigilatorAmount] = useState(0)
+    const [totalAdministerAmount, setTotalAdministerAmount] = useState(0)
+    const [totalSupervisorAmount, setTotalSupervisorAmount] = useState(0)
+    const [totalThesisExamineeAmount, setTotalThesisExamineeAmount] = useState(0)
+    const [totalThesisVivaAmount, setTotalThesisVivaAmount] = useState(0)
+    const [totalExamCommitteeMemberAmount, setTotalExamCommitteeMemberAmount] = useState(0)
+    const [totalExamCommitteePresidentAmount, setTotalExamCommitteePresidentAmount] = useState(0)
+    const [totalChairmanAmount, setTotalChairmanAmount] = useState(0)
+    const [totalDeanAmount, setTotalDeanAmount] = useState(0)
+
+
     useEffect(() => {
-        setTotalAmount(
+        setTotalTheoryAmount(
             amounts.theory * paperNumber.theoryPaper)
-    }, [amounts.theory, paperNumber.theoryPaper])
+        setTotalClassTestAmount(paperNumber.classTest * amounts.classTest)
+        setTotalPaperModerationAmount(paperNumber.moderation * amounts.questionModeration)
+        setTotalSemesterFinalThreeAmount(studentNumber.semesterFinalThree * amounts.examPaperEvalSemesterThree)
+        setTotalSemesterFinalFourAmount(studentNumber.semesterFinalFour * amounts.examPaperEvalSemesterFour)
+        setTotalClassTestEvalAmount(studentNumber.classTestEval * amounts.classTestEval)
+        setTotalVivaAmount(studentNumber.viva * amounts.viva)
+        setTotalLabPaperAmount(paperNumber.labPaper * amounts.labQuestion)
+        setTotalReportPaperAmount(paperNumber.reportPaper * amounts.labReport)
+        setTotalSurveyAmount(paperNumber.surveyNumber * amounts.survey)
+        setTotalExamineerLabHourAmount(hour.examineerLabHour * amounts.examineerLabHour)
+        setTotalTabulationAmount(studentNumber.tabulationStudent * amounts.tabulationFirst)
+        setTotalGradeSheetAmount(studentNumber.gradeSheet * amounts.gradeSheetEval)
+        setTotalComposedPaperAmount(paperNumber.composedPaper * amounts.theoryQuestCompose)
+        setTotalPhotocopyPaperAmount(paperNumber.photocopyPaper * amounts.theoryQuestPhotocopy)
+        setTotalModerationPaperAmount(paperNumber.moderationPaper * amounts.theoryQuestModeration)
+        setTotalLabHeadExamineerAmount(hour.labHeadExamineer * amounts.labHeadExamineer)
+        setTotalInvigilatorAmount(hour.invigilator * amounts.invigilator)
+        setTotalAdministerAmount(paperNumber.administerPaper * amounts.administer)
+        setTotalSupervisorAmount(studentNumber.supervisor * amounts.supervisor)
+        setTotalThesisExamineeAmount(studentNumber.thesisExaminee * amounts.thesisExaminee)
+        setTotalThesisVivaAmount(studentNumber.thesisViva * amounts.thesisViva)
+        setTotalExamCommitteeMemberAmount(hour.examCommitteeMember * amounts.examCommitteeMember)
+        setTotalExamCommitteePresidentAmount(hour.examCommitteePresident * amounts.examCommitteePresident)
+        setTotalChairmanAmount(hour.chairman * amounts.deptChairman)
+        setTotalDeanAmount(hour.dean * amounts.dean)
+
+
+    }, [studentNumber, paperNumber, hour, amounts])
 
 
     const examYearHandler = (year) => {
@@ -96,10 +154,44 @@ const ExamDetails = () => {
 
     const handleCheckedButton = (name, value) => {
         setCheckedButtons({ ...checkedButtons, [name]: value })
-        // name === 'examCommitteeMember' && value === true ? setCommeetteeAmounts({ ...commeetteeAmounts, [name]: hour.examCommitteeMember * amounts.examCommitteeMember }) : setCommeetteeAmounts({ ...commeetteeAmounts, [name]: 0 })
-        name === 'examCommitteePresident' && value === true ? setCommeetteeAmounts({ ...commeetteeAmounts, [name]: hour.examCommitteePresident * amounts.examCommitteePresident }) : setCommeetteeAmounts({ ...commeetteeAmounts, [name]: 0 })
-        // name === 'chairman' && value === true ? setCommeetteeAmounts({ ...commeetteeAmounts, [name]: hour.chairman * amounts.deptChairman }) : setCommeetteeAmounts({ ...commeetteeAmounts, [name]: 0 })
-        // name === 'dean' && value === true ? setCommeetteeAmounts({ ...commeetteeAmounts, [name]: hour.dean * amounts.dean }) : setCommeetteeAmounts({ ...commeetteeAmounts, [name]: 0 })
+
+        if (name === 'examCommitteeMember') {
+            if (value === false) {
+                setCommeetteeAmounts({ ...commeetteeAmounts, [name]: 0 })
+            }
+            else {
+                setCommeetteeAmounts({ ...commeetteeAmounts, [name]: hour.examCommitteeMember * amounts.examCommitteeMember })
+            }
+        }
+
+        if (name === 'examCommitteePresident') {
+            if (value === false) {
+                setCommeetteeAmounts({ ...commeetteeAmounts, [name]: 0 })
+            }
+            else {
+                setCommeetteeAmounts({ ...commeetteeAmounts, [name]: hour.examCommitteePresident * amounts.examCommitteePresident })
+            }
+        }
+
+        if (name === 'examCommitteeChairman') {
+            console.log(name, value)
+            if (value === false) {
+                setCommeetteeAmounts({ ...commeetteeAmounts, [name]: 0 })
+            }
+            else {
+                setCommeetteeAmounts({ ...commeetteeAmounts, [name]: hour.examCommitteeChairman * amounts.deptChairman })
+            }
+        }
+
+        if (name === 'examCommitteeDean') {
+            if (value === false) {
+                setCommeetteeAmounts({ ...commeetteeAmounts, [name]: 0 })
+            }
+            else {
+                setCommeetteeAmounts({ ...commeetteeAmounts, [name]: hour.examCommitteeDean * amounts.dean })
+            }
+        }
+
     }
 
     const [theoryQuestionAmounts, setTheoryQuestionAmounts] = useState(0)
@@ -221,8 +313,9 @@ const ExamDetails = () => {
                             </Col>
                             <Col>
                                 {/* <h6 className='pt-2'> {amounts.theory * paperNumber.theoryPaper}</h6> */}
-                                <h6>{theoryAmountHandler(
-                                    amounts.theory * paperNumber.theoryPaper)}</h6>
+                                {/* <h6>{theoryAmountHandler(
+                                    amounts.theory * paperNumber.theoryPaper)}</h6> */}
+                                {<h6>{totalTheoryAmount}</h6>}
                             </Col>
                         </Row>
                         <h6 className='pt-2'>প্রশ্নপত্রকরণ (ক্লাস টেস্ট)</h6>
@@ -245,7 +338,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{paperNumber.classTest * amounts.classTest}</h6>
+                                <h6 className='pt-2'>{totalClassTestAmount}</h6>
 
                             </Col>
                         </Row>
@@ -274,7 +367,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{paperNumber.moderation * amounts.questionModeration}</h6>
+                                <h6 className='pt-2'>{totalPaperModerationAmount}</h6>
                             </Col>
                         </Row>
                     </Card.Body>
@@ -305,7 +398,8 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{studentNumber.semesterFinalThree * amounts.examPaperEvalSemesterThree}</h6>
+                                {/* <h6 className='pt-2'>{studentNumber.semesterFinalThree * amounts.examPaperEvalSemesterThree}</h6> */}
+                                <h6 className='pt-2'>{totalSemesterFinalThreeAmount}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>সেমিস্টার ফাইনাল (৪ ঘন্টা)</h6>
@@ -328,7 +422,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{studentNumber.semesterFinalFour * amounts.examPaperEvalSemesterFour}</h6>
+                                <h6 className='pt-2'>{totalSemesterFinalFourAmount}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>ক্লাস টেস্ট</h6>
@@ -337,21 +431,21 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>ছাত্রের সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input type='number' onChange={(e) => textInputHandler('classTest', e.target.value)} ></input>
+                                <input type='number' onChange={(e) => textInputHandler('classTestEval', e.target.value)} ></input>
                             </Col>
                             <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>টাকা</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{amounts.classTest}</h6>
+                                <h6 className='pt-2'>{amounts.classTestEval}</h6>
                             </Col>
                             <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{studentNumber.classTest * amounts.classTest}</h6>
+                                <h6 className='pt-2'>{totalClassTestEvalAmount}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>মৌখিক পরীক্ষা</h6>
@@ -374,7 +468,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{studentNumber.viva * amounts.viva}</h6>
+                                <h6 className='pt-2'>{totalVivaAmount}</h6>
                             </Col>
                         </Row>
                     </Card.Body>
@@ -405,7 +499,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{paperNumber.labPaper * amounts.labQuestion}</h6>
+                                <h6 className='pt-2'>{totalLabPaperAmount}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>রিপোর্ট ও স্ক্রিপ্ট</h6>
@@ -428,7 +522,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{paperNumber.reportPaper * amounts.labReport}</h6>
+                                <h6 className='pt-2'>{totalReportPaperAmount}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>সার্ভে</h6>
@@ -451,7 +545,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{paperNumber.surveyNumber * amounts.survey}</h6>
+                                <h6 className='pt-2'>{totalSurveyAmount}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>পরীক্ষকের সম্মানী</h6>
@@ -474,7 +568,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{hour.examineerLabHour * amounts.examineerLabHour}</h6>
+                                <h6 className='pt-2'>{totalExamineerLabHourAmount}</h6>
                             </Col>
                         </Row>
                     </Card.Body>
@@ -539,7 +633,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{studentNumber.tabulationStudent * amounts.tabulationFirst}</h6>
+                                <h6 className='pt-2'>{totalTabulationAmount}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>গ্রেডশীট যাচাই</h6>
@@ -562,7 +656,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'> {studentNumber.gradeSheet * amounts.gradeSheetEval}</h6>
+                                <h6 className='pt-2'> {totalGradeSheetAmount}</h6>
                             </Col>
                         </Row>
 
@@ -594,7 +688,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6> {paperNumber.composedPaper * amounts.theoryQuestCompose}</h6>
+                                <h6> {totalComposedPaperAmount}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>প্রশ্নপত্র ফটোকপি</h6>
@@ -617,7 +711,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6> {paperNumber.photocopyPaper * amounts.theoryQuestPhotocopy}</h6>
+                                <h6> {totalPhotocopyPaperAmount}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>তদারকি</h6>
@@ -626,7 +720,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>প্রশ্নের সংখ্যা</h6>
                             </Col>
                             <Col>
-                                <input type='number' onChange={(e) => paperInputHandler('moderationPaper', e.target.value)} ></input>
+                                <input type='number' onChange={(e) => paperInputHandler('administerPaper', e.target.value)} ></input>
                             </Col>
                             <Col></Col>
                             <Col>
@@ -750,7 +844,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{studentNumber.supervisor * amounts.supervisor}</h6>
+                                <h6 className='pt-2'>{totalSupervisorAmount}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>পরিক্ষক</h6>
@@ -773,7 +867,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{studentNumber.thesisExaminee * amounts.thesisExaminee}</h6>
+                                <h6 className='pt-2'>{totalThesisExamineeAmount}</h6>
                             </Col>
                         </Row>
                         <h6 className='pt-2'>মৌখিক পরীক্ষা</h6>
@@ -796,7 +890,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6 className='pt-2'>{studentNumber.thesisViva * amounts.thesisViva}</h6>
+                                <h6 className='pt-2'>{totalThesisVivaAmount}</h6>
                             </Col>
                         </Row>
 
@@ -857,7 +951,7 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6> {commeetteeAmounts.chairman}</h6>
+                                <h6> {commeetteeAmounts.examCommitteeChairman}</h6>
                             </Col>
                         </Row>
                         <Row>
@@ -883,12 +977,12 @@ const ExamDetails = () => {
                                 <h6 className='pt-2'>মোট</h6>
                             </Col>
                             <Col>
-                                <h6> {commeetteeAmounts.dean}</h6>
+                                <h6> {commeetteeAmounts.examCommitteeDean}</h6>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Form.Check type='switch' id='controller' label='প্রেসিডেন্ট' onChange={(e) => handleCheckedButton('examCommitteePresident', e.target.checked)}>
+                                <Form.Check type='switch' id='president' label='প্রেসিডেন্ট' onChange={(e) => handleCheckedButton('examCommitteePresident', e.target.checked)}>
                                 </Form.Check>
                             </Col>
                             <Col>
@@ -971,6 +1065,7 @@ const amounts = {
     questionModeration: 2500,
     examPaperEvalSemesterThree: 120,
     examPaperEvalSemesterFour: 150,
+    classTestEval: 50,
     viva: 60,
     vivaOfficer: 400,
     vivaOfficeAssistant: 350,

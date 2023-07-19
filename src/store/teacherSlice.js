@@ -10,7 +10,7 @@ const initialState = [
     {
         nameEnglish: 'Nitun Poddar',
         nameBengali: 'নিতুন পোদ্দার',
-        department: 'Electronice and Electrical Engineering',
+        department: 'Electrical and Electronics Engineering',
         rank: 'Lecturer',
     },
     {

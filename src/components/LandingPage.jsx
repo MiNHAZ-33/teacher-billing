@@ -43,7 +43,7 @@ const LandingPage = () => {
                         </Card>
                     </Col>
                 </Row>
-                <Link to={'/login'}>
+                <Link to={'/billpage'}>
                     <Button variant="secondary" className="mt-5">Get Started</Button>
                 </Link>
 

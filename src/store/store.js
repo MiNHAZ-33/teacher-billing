@@ -8,6 +8,8 @@ const store = configureStore({
         teacher: teacherSlice,
         teacherApi: teacherApiSlice,
         billlist: billlistSlice
+
+        //reducers are declared here
     }
 })
 

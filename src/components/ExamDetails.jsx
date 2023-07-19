@@ -236,7 +236,7 @@ const ExamDetails = () => {
                             <Col>
                                 <Dropdown >
                                     <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                        {examYear ? examYear : 'Select exam name'}
+                                        {examYear ? examYear : 'Select exam year'}
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
                                         {examYears.map((name, index) => {
@@ -600,7 +600,7 @@ const ExamDetails = () => {
                                 </Dropdown>
                             </Col>
                             <Col></Col>
-                            <Col>
+                            <Col className='ms-5'>
                                 <h6 className='pt-2'>টাকা</h6>
                             </Col>
                             <Col>
@@ -1013,6 +1013,22 @@ const ExamDetails = () => {
                     <Card.Body>
                         <Card.Title className='text-center pb-2'>বিবিধ</Card.Title>
                         <Row>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>ডাক মাশুল</h6>
                             </Col>
@@ -1031,6 +1047,22 @@ const ExamDetails = () => {
                             <Col></Col>
                         </Row>
                         <Row>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>বিবিধ</h6>
                             </Col>
@@ -1053,6 +1085,13 @@ const ExamDetails = () => {
                     <Card.Body>
                         <Card.Title className='text-center pb-2'>সর্বমোট</Card.Title>
                         <Row>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
                             <Col>
                                 <h6 className='pt-2'>সর্বমোট</h6>
                             </Col>
@@ -1068,45 +1107,45 @@ const ExamDetails = () => {
 }
 
 const amounts = {
-    theory: 2000,
-    classTest: 300,
-    questionModeration: 2500,
-    examPaperEvalSemesterThree: 120,
-    examPaperEvalSemesterFour: 150,
-    classTestEval: 50,
-    viva: 60,
-    vivaOfficer: 400,
-    vivaOfficeAssistant: 350,
-    labAttendant: 250,
-    labQuestion: 600,
-    labReport: 40,
-    survey: 12000,
-    examineerLabHour: 300,
-    tabulationFirst: 70,
-    tabulationSecond: 75,
-    tabulationThird: 80,
-    tabulationFourth: 90,
-    gradeSheetEval: 350,
-    theoryQuestCompose: 400,
-    administerPaper: 200,
+    theory: 200,
+    classTest: 30,
+    questionModeration: 250,
+    examPaperEvalSemesterThree: 10,
+    examPaperEvalSemesterFour: 15,
+    classTestEval: 5,
+    viva: 6,
+    vivaOfficer: 40,
+    vivaOfficeAssistant: 35,
+    labAttendant: 25,
+    labQuestion: 60,
+    labReport: 4,
+    survey: 1200,
+    examineerLabHour: 30,
+    tabulationFirst: 7,
+    tabulationSecond: 7,
+    tabulationThird: 8,
+    tabulationFourth: 9,
+    gradeSheetEval: 35,
+    theoryQuestCompose: 40,
+    administerPaper: 20,
     theoryQuestPhotocopy: 25,
-    labHeadExamineer: 600,
-    invigilator: 500,
-    administer: 200,
-    examController: 2700,
-    subExamController: 2200,
-    assistantController: 1600,
-    officer: 150,
-    labAssistant: 100,
-    labAttendantLab: 90,
-    labCommitteePresident: 2000,
-    supervisor: 5000,
-    thesisExaminee: 1500,
-    thesisViva: 150,
-    examCommitteeMember: 2500,
-    examCommitteePresident: 4000,
-    dean: 6000,
-    deptChairman: 5500
+    labHeadExamineer: 60,
+    invigilator: 50,
+    administer: 20,
+    examController: 270,
+    subExamController: 220,
+    assistantController: 160,
+    officer: 15,
+    labAssistant: 10,
+    labAttendantLab: 9,
+    labCommitteePresident: 200,
+    supervisor: 500,
+    thesisExaminee: 150,
+    thesisViva: 15,
+    examCommitteeMember: 250,
+    examCommitteePresident: 400,
+    dean: 600,
+    deptChairman: 550
 }
 
 // teacher = {
